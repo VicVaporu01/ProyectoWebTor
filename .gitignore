@@ -1,0 +1,47 @@
+# ----------------------------
+# Archivos comunes a todo el proyecto
+# ----------------------------
+.DS_Store
+Thumbs.db
+*.log
+*.env
+.env.*
+*.swp
+*.swo
+*~
+
+# Archivos de configuración de IDEs
+.idea/
+.vscode/
+*.iml
+
+# ----------------------------
+# Ignorar archivos para el frontend en Angular
+# ----------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.angular-cache/
+frontend/.firebase/
+frontend/*.tsbuildinfo
+frontend/.env
+
+# ----------------------------
+# Ignorar archivos para el backend en Node.js
+# ----------------------------
+backend/node_modules/
+backend/coverage/
+backend/build/
+backend/dist/
+backend/.env
+backend/npm-debug.log*
+backend/yarn-debug.log*
+backend/yarn-error.log*
+
+# ----------------------------
+# Archivos de configuración del sistema operativo
+# ----------------------------
+*.tmp
+*.bak
+**/*.swp
+
