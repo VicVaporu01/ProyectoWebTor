@@ -1,4 +1,4 @@
-import Server from "./models/server";
+import Server from "./models/Server";
 import dotenv from 'dotenv';
 
 // MIDDLEWARES
