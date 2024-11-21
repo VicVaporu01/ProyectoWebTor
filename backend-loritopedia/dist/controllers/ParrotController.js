@@ -15,9 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createParrot = exports.getParrots = void 0;
 const ParrotModel_1 = __importDefault(require("../models/ParrotModel"));
 const getParrots = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.json({
-        message: "Get Parrots"
-    });
+    try {
+        const parrots = yield ParrotModel_1.default.find();
+        res.status(200).json({
+            message: "Get all Parrots",
+            data: parrots
+        });
+    }
+    catch (error) {
+        console.log(`Error: ${error.message}`);
+        res.status(500).json();
+    }
 });
 exports.getParrots = getParrots;
 const createParrot = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

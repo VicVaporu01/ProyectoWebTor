@@ -2,9 +2,17 @@ import {Request, Response} from 'express';
 import Parrot from "../models/ParrotModel";
 
 export const getParrots = async (req: Request, res: Response) => {
-    res.json({
-        message: "Get Parrots"
-    });
+    try {
+        const parrots = await Parrot.find();
+
+        res.status(200).json({
+            message: "Get all Parrots",
+            data: parrots
+        });
+    } catch (error: any) {
+        console.log(`Error: ${error.message}`);
+        res.status(500).json();
+    }
 }
 
 export const createParrot = async (req: Request, res: Response) => {
