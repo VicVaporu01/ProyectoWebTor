@@ -1,9 +1,12 @@
 import {Router} from 'express';
 import {createParrot, getParrots} from "../controllers/ParrotController";
+import {authRequired} from "../middlewares/ValidateToken";
 
 const router = Router();
 
+// @ts-ignore
 router.get("/", getParrots);
-router.post("/", createParrot);
+// @ts-ignore
+router.post("/", authRequired, createParrot);
 
 export default router;

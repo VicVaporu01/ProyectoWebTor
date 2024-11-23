@@ -14,6 +14,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const cors_1 = __importDefault(require("cors"));
 const ParrotRoutes_1 = __importDefault(require("../routes/ParrotRoutes"));
 const UserRoutes_1 = __importDefault(require("../routes/UserRoutes"));
 const DBConnection_1 = require("../db/DBConnection");
@@ -37,12 +39,17 @@ class Server {
         });
     }
     middlewares() {
-        this.app.use(express_1.default.json());
         this.app.use((0, morgan_1.default)('dev'));
+        this.app.use(express_1.default.json());
+        this.app.use((0, cookie_parser_1.default)());
+        this.app.use((0, cors_1.default)({
+            credentials: true,
+            origin: ["http://localhost:4200"]
+        }));
     }
     routes() {
-        this.app.use('/api/parrots', ParrotRoutes_1.default);
         this.app.use("/api/users", UserRoutes_1.default);
+        this.app.use('/api/parrots', ParrotRoutes_1.default);
     }
 }
 exports.default = Server;

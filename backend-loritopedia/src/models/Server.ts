@@ -1,5 +1,7 @@
 import express, {Application} from 'express';
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import routesParrot from "../routes/ParrotRoutes";
 import routesUser from "../routes/UserRoutes";
 import {connectDB} from "../db/DBConnection";
@@ -28,13 +30,18 @@ class Server {
     }
 
     private middlewares() {
-        this.app.use(express.json());
         this.app.use(morgan('dev'));
+        this.app.use(express.json());
+        this.app.use(cookieParser());
+        this.app.use(cors({
+            credentials: true,
+            origin: ["http://localhost:4200"]
+        }));
     }
 
     private routes() {
-        this.app.use('/api/parrots', routesParrot);
         this.app.use("/api/users", routesUser);
+        this.app.use('/api/parrots', routesParrot);
     }
 }
 

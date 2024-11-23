@@ -6,8 +6,7 @@ export const getParrots = async (req: Request, res: Response) => {
         const parrots = await Parrot.find();
 
         res.status(200).json({
-            message: "Get all Parrots",
-            data: parrots
+            parrots
         });
     } catch (error: any) {
         console.log(`Error: ${error.message}`);

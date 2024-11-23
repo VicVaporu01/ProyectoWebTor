@@ -1,0 +1,56 @@
+<div class="wrapper">
+  <form [formGroup]="formParrotRegister" (ngSubmit)="registerParrot()">
+    <div class="body">
+      <img class="logo" ngSrc="/img/parrot.png" priority
+           alt="img login" height="130" width="130">
+      <h3>Register New Parrot</h3>
+      @if (scientificName?.invalid && scientificName?.touched) {
+        <div class="alert alert-danger mb-1" role="alert">
+          Please, enter a valid scientific name
+        </div>
+      }
+      <div class="form-floating mb-3">
+        <input type="text" formControlName="scientificName" class="form-control" placeholder="Example Name">
+        <label>Scientific Name</label>
+      </div>
+      @if (colloquialName?.invalid && colloquialName?.touched) {
+        <div class="alert alert-danger mb-1" role="alert">
+          Please, enter a valid colloquial name
+        </div>
+      }
+      <div class="form-floating mb-3">
+        <input type="text" formControlName="colloquialName" class="form-control" placeholder="Example Name">
+        <label>Colloquial Name</label>
+      </div>
+      @if (description?.invalid && description?.touched) {
+        <div class="alert alert-danger mb-1" role="alert">
+          Please, enter a valid description
+        </div>
+      }
+      <div class="form-floating mb-3">
+        <input type="text" formControlName="description" class="form-control" placeholder="Description">
+        <label>Description</label>
+      </div>
+      @if (lifeExpectancyInYears?.invalid && lifeExpectancyInYears?.touched) {
+        <div class="alert alert-danger mb-1" role="alert">
+          Please, enter a valid lifeExpectancyInYears
+        </div>
+      }
+      <div class="form-floating mb-3">
+        <input type="number" formControlName="lifeExpectancyInYears" class="form-control" placeholder="0">
+        <label>Life Expectancy In Years</label>
+      </div>
+      @if (photoLink?.invalid && photoLink?.touched) {
+        <div class="alert alert-danger mb-1" role="alert">
+          Please, enter a valid photoLink
+        </div>
+      }
+      <div class="form-floating mb-3">
+        <input type="text" formControlName="photoLink" class="form-control" placeholder="Photo link">
+        <label>Photo Link</label>
+      </div>
+      <button type="submit" [disabled]="formParrotRegister.invalid" class="btn btn-success btn-lg">Register</button>
+      <p class="mt-2">Already have and account? <a routerLink="/login">Login</a></p>
+    </div>
+  </form>
+</div>

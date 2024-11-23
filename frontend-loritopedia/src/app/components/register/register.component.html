@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <form [formGroup]="formUserRegister" (ngSubmit)="register()">
+    <div class="body">
+      <img class="logo" ngSrc="/img/parrot.png" priority
+           alt="img login" height="130" width="130">
+      <h3>Register</h3>
+      @if (username?.invalid && username?.touched) {
+        <div class="alert alert-danger mb-1" role="alert">
+          Please, enter a valid username
+        </div>
+      }
+      <div class="form-floating mb-3">
+        <input type="text" formControlName="username" class="form-control" placeholder="Example Name">
+        <label>Username</label>
+      </div>
+      @if (email?.invalid && email?.touched) {
+        <div class="alert alert-danger mb-1" role="alert">
+          Please, enter a valid email
+        </div>
+      }
+      <div class="form-floating mb-3">
+        <input type="email" formControlName="email" class="form-control" placeholder="name@example.com">
+        <label>Email address</label>
+      </div>
+      @if (password?.invalid && password?.touched) {
+        <div class="alert alert-danger mb-1" role="alert">
+          Please, enter a valid password
+        </div>
+      }
+      <div class="form-floating mb-3">
+        <input type="password" formControlName="password" class="form-control" placeholder="Password">
+        <label>Password</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Password">
+        <label>Repeat Password</label>
+      </div>
+      <button type="submit" [disabled]="formUserRegister.invalid" class="btn btn-success btn-lg">Register</button>
+      <p class="mt-2">Already have and account? <a routerLink="/login">Login</a></p>
+    </div>
+  </form>
+</div>

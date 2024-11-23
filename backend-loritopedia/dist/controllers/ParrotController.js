@@ -18,8 +18,7 @@ const getParrots = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     try {
         const parrots = yield ParrotModel_1.default.find();
         res.status(200).json({
-            message: "Get all Parrots",
-            data: parrots
+            parrots
         });
     }
     catch (error) {

@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <div class="row">
+    @if (isLoggedIn) {
+      <div class="col-12 mb-3">
+        <button type="button" class="btn btn-primary" (click)="addNewParrot()" routerLink="/register-parrot">Add New
+          Parrot
+        </button>
+      </div>
+    }
+    @for (parrot of parrots; track parrot._id) {
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="{{parrot.photoLink}}" class="card-img-top" alt="{{ parrot.colloquialName }}" width="200">
+          <div class="card-body">
+            <h5 class="card-title">{{ parrot.colloquialName }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ parrot.scientificName }}</h6>
+            <p class="card-text">{{ parrot.description }}</p>
+            <p class="card-text"><small class="text-muted">Life Expectancy: {{ parrot.lifeExpectancyInYears }}
+              years</small></p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
